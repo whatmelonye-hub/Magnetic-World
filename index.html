@@ -728,8 +728,8 @@
           <ul class="hot-list">
             <li><span class="hot-rank">1</span><div>酱饼——最近很火的日韩情侣 🍥</div></li>
             <li><span class="hot-rank">2</span><div>浴衣的着装指南 👘</div></li>
-            <li><span class="hot-rank">3</span><div>不敢对视的原因究竟是....</div></li>
-            <li><span class="hot-rank">4</span><div>海底捞偶遇爱豆情侣？？</div></li>
+            <li><span class="hot-rank">3</span><div>将太郎购入新相机？！📷</div></li>
+            <li><span class="hot-rank">4</span><div>震惊！元彬补觉中…… 😴</div></li>
             <li><span class="hot-rank">5</span><div>双人相册、双人抖持续更新中 ✨</div></li>
           </ul>
         </div>
@@ -782,7 +782,7 @@
         <!-- 🎂 생일 카운트다운 · 移至左栏收尾 -->
         <div class="card tilt-l">
           <p class="card-title" style="font-size:15px;">🎂 생일 카운트다운</p>
-          <div class="zh card-sub">生日倒计时</div>
+          <div class="zh card-sub">生日倒计时 · 只数天数</div>
           <div class="bday-duo" id="bdayDuo">
             <div class="bday-box"><div class="bday-name">--</div><div class="bday-date">--</div><div class="bday-num">--</div><div class="bday-when">天后</div></div>
             <div class="bday-box"><div class="bday-name">--</div><div class="bday-date">--</div><div class="bday-num">--</div><div class="bday-when">天后</div></div>
@@ -1026,7 +1026,7 @@
         <p class="card-title">✦ 기록 서랍<span class="gb-meta" style="font-family:'Noto Sans SC',sans-serif;">记录抽屉 · 五类年档</span></p>
         <div class="arch-tabs" id="recTabs"></div>
         <div id="recBody"></div>
-        <div class="sub-note">사진 위치: Storage media/records/分类/（年份 폴더는 선택） · 파일명 = 제목<span class="zh">往 media 桶 records/&lt;分类&gt;/ 传照片即自动上榜：MEGA / EITHER&amp; / TO U / MY FAVORITE / 기타(其他)，年份子文件夹可有可无；文件名当标题（未接后端时走文件内置数据）</span></div>
+        <div class="sub-note">사진 위치: Storage media/records/分类/（年份 폴더는 선택） · 파일명 = 제목<span class="zh">往 media 桶 records/&lt;分类&gt;/ 传照片即自动上榜：MEGA / EITHER&amp; / TO U / MY FAVORITE / vedio（映射到其他），年份子文件夹可有可无；文件名当标题（未接后端时走文件内置数据）</span></div>
       </div>
     </div>
   </div>
@@ -1849,7 +1849,7 @@
     {id:'EITHER', label:'EITHER&', byYear:false},
     {id:'TOU', label:'TO U', byYear:false},
     {id:'FAV', label:'MY FAVORITE', byYear:false},
-    {id:'OTHER', label:'기타', zh:'其他', aliases:['其他','기타','OTHER','ETC','杂项','미분류'], byYear:false}
+    {id:'OTHER', label:'기타', zh:'其他', aliases:['其他','기타','OTHER','ETC','杂项','미분류','vedio'], byYear:false}
   ];
   const REC_ITEMS = { /* RECORD 数据 */
     MEGA: [
@@ -1873,7 +1873,7 @@
       {y:2026, d:'2026.03.10', t:'완치 기념 폴라로이드', z:'痊愈纪念拍立得', e:'📸', c:'#e8f5d8', body:'볼에 붕대 자국, 그래도 웃음 만점<span class="zh">脸上还有纱布印，照样满分笑容</span>'},
       {y:2024, d:'2024.05.05', t:'아동날 데이트 컷', z:'儿童节约会照', e:'🎠', c:'#d8ecf5', body:'우리에겐 매일이 아동절<span class="zh">对我们来说每天都是儿童节</span>'}
     ],
-    /* 기타 / 其他：杂项都丢进这一栏。下面两条只是示例，删掉即可；删空后往 media 桶 records/OTHER/ 传照片就自动上榜 */
+    /* 기타 / 其他：杂项都丢进这一栏。Supabase 路径 records/vedio/ 映射到此分类；以下为演示数据 */
     OTHER: [
       {y:2026, d:'2026.03.20', t:'칫솔 두 개, 컵 하나', z:'两支牙刷一个杯子', e:'🧴', c:'#e8f5d8', body:'세면대 앞이 제일 붐비는 시간<span class="zh">洗手台前最挤的时刻</span>'},
       {y:2025, d:'2025.06.01', t:'장마철 우산 실종 사건', z:'梅雨季雨伞失踪案', e:'☔', c:'#d8ecf5', body:'또 하나 잃어버렸어요. 이번이 세 번째<span class="zh">又丢了一把，这已经是第三把</span>'}
@@ -2068,7 +2068,7 @@
      照片放在 media 桶里，文件夹结构 = 全部内容：
        media/archive/<渠道>/<年份>/照片.jpg     ← photo archive：只有 X / IG / WVS 按年份分组（需要 <年份> 子文件夹）
        media/records/<分类>/照片.jpg   ← 特别记录 & LYSN / OFFICIAL：不分年份，文件直接丢进渠道/分类文件夹即平铺
-         records/ 分类文件夹名：MEGA / EITHER / TO U / MY FAVORITE / OTHER（写「其他」「기타」也会并进 OTHER 栏）
+         records/ 分类文件夹名：MEGA / EITHER / TO U / MY FAVORITE / vedio（映射为 OTHER/其他）；旧路径 OTHER、中文「其他」和「기타」仍兼容
      • 标签页跟着文件夹走：新建一个渠道文件夹 = 自动多一个标签；年份组合同理
      • 文件名 = 标题；用「--」追加中文说明：`完治纪念--痊愈纪念.jpg`
      • 特别记录想显示日期就写在文件名开头：`2026.03.04--绷带情侣照.jpg`
@@ -2337,5 +2337,5 @@
     paint();
   })();
 </script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a423e75efb9e62e1',t:'MTc5MDYxMDYyNg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a428a065fe39e02d',t:'MTc5MDY2MDE0OA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4291932285ec255',t:'MTc5MDY2NTA5Ng=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a5f03007bf5757b3',t:'MTc5NTQzNzA1Mg=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a5f03007bf5757b3',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a423e75efb9e62e1',t:'MTc5MDYxMDYyNg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a428a065fe39e02d',t:'MTc5MDY2MDE0OA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4291932285ec255',t:'MTc5MDY2NTA5Ng=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a5f050820f083640',t:'MTc5NTQzODM4Mg=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a5f050820f083640',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
